@@ -530,15 +530,6 @@ cursor.style.top=e.clientY+"px";
 
 });
 
-const cursor = document.querySelector(".cursor");
-
-if(cursor){
-    document.addEventListener("mousemove", function(e){
-        cursor.style.transform =
-            `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
-    });
-}
-
 document.querySelectorAll("a,button").forEach(item=>{
 
 item.addEventListener("mouseenter",()=>{
