@@ -410,12 +410,6 @@ revealObserver.observe(item);
 });
 
 /*==========================================
-PART 2A.3
-PREMIUM EFFECT
-==========================================*/
-
-
-/*==========================================
 TOAST NOTIFICATION
 ==========================================*/
 
@@ -1137,3 +1131,110 @@ console.log("%cPortfolio Premium v3",
 "color:#8B5CF6;font-size:22px;font-weight:bold;");
 
 console.log("Created by Marcellino with HTML CSS JavaScript");
+
+/*==========================================
+EDUCATION POPUP
+==========================================*/
+
+const educationData = [
+{
+title:"SMK Krian 1 Sidoarjo",
+image:"foto/smk.jpg",
+description:"SMK Krian 1 Sidoarjo merupakan sekolah kejuruan yang memiliki berbagai program keahlian, salah satunya Rekayasa Perangkat Lunak (RPL). Di sekolah ini saya mempelajari HTML, CSS, JavaScript, PHP, MySQL, pembuatan website, UI/UX, serta berbagai proyek berbasis web."
+},
+
+{
+title:"SMP Negeri 1 Prambon",
+image:"foto/smp.jpg",
+description:"Selama bersekolah di SMP Negeri 1 Prambon saya mulai mengenal dunia komputer dan teknologi. Dari sinilah muncul minat saya untuk menjadi seorang programmer dan melanjutkan pendidikan ke jurusan Rekayasa Perangkat Lunak."
+},
+
+{
+title:"SD Negeri Kedung Wonokerto",
+image:"foto/sd.jpeg",
+description:"Di SD Negeri Kedung Wonokerto saya mulai tertarik dengan teknologi dan komputer. Ketertarikan tersebut menjadi awal perjalanan saya untuk belajar di bidang IT hingga sekarang."
+}
+];
+
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+const popup = document.getElementById("educationPopup");
+const popupImage = document.getElementById("popupImage");
+const popupTitle = document.getElementById("popupTitle");
+const popupDescription = document.getElementById("popupDescription");
+const closePopup = document.getElementById("closeEducation");
+
+timelineItems.forEach((item,index)=>{
+
+item.style.cursor="pointer";
+
+item.addEventListener("click",()=>{
+
+popup.classList.add("active");
+
+popupImage.src = educationData[index].image;
+popupTitle.innerText = educationData[index].title;
+popupDescription.innerText = educationData[index].description;
+
+});
+
+});
+
+closePopup.addEventListener("click",()=>{
+
+popup.classList.remove("active");
+
+});
+
+popup.addEventListener("click",(e)=>{
+
+if(e.target===popup){
+
+popup.classList.remove("active");
+
+}
+
+});
+
+/*==========================================
+EXPERIENCE POPUP
+==========================================*/
+
+const experienceCard = document.getElementById("experienceCard");
+
+experienceCard.addEventListener("click", () => {
+
+    popup.classList.add("active");
+
+    popupImage.src = "foto/cnc.png"; // ganti sesuai nama file
+
+    popupTitle.innerText = "PT CNC Disain Nusantara";
+
+    popupDescription.innerText =
+    "PT CNC Disain Nusantara merupakan perusahaan yang bergerak di bidang Industrial Automation dan Authorized Solution Partner Siemens. Selama PKL saya mengerjakan pembuatan Website Responsive, Landing Page, Dashboard, UI Modern, serta membantu berbagai pekerjaan berbasis web dan teknologi industri.";
+
+});
+
+/*==========================================
+MOUSE GLASS EFFECT
+==========================================*/
+
+const premiumCards = document.querySelectorAll(
+".timeline-item,.skill-card,.project-card,.experience-box,.contact-box"
+);
+
+premiumCards.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect = card.getBoundingClientRect();
+
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+
+card.style.setProperty("--x",x+"px");
+card.style.setProperty("--y",y+"px");
+
+});
+
+});
